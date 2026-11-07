@@ -1,0 +1,206 @@
+{
+  "projeto": "EngMan Copilot",
+  "versao": "sprint1",
+  "observacao": "Contrato das tools em JSON Schema (formato 'function calling'). Todos os retornos sao SIMULADOS. As 4 primeiras sao obrigatorias; as 2 ultimas sao diferenciais. O campo 'x_comportamento_em_falha' nao e enviado ao modelo: documenta o que o assistente deve fazer quando a tool falha (regra BORDA do system prompt).",
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "consultar_ativo",
+        "description": "Retorna a ficha de um ativo (CFTV PTZ, PMV ou Callbox) identificado por TAG: tipo, fabricante, modelo, km, praca/portico, data de instalacao, vida util e criticidade. Use SEMPRE antes de falar sobre criticidade, modelo ou localizacao de um ativo. Nao use para historico de falhas.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "tag": {
+              "type": "string",
+              "description": "TAG unica do ativo no catalogo simulado, no formato TIPO-RODOVIA-KMxxx-NN, ex.: CFTV-SP330-KM412-01, PMV-SP330-KM205-01, CBX-SP330-KM118-01.",
+              "pattern": "^(CFTV|PMV|CBX)-[A-Z]{2}[0-9]{3}-KM[0-9]{3}-[0-9]{2}$"
+            }
+          },
+          "required": ["tag"],
+          "additionalProperties": false
+        }
+      },
+      "x_comportamento_em_falha": {
+        "ativo_nao_encontrado": "Informar 'nao encontrei esse TAG no catalogo', pedir para conferir o TAG e NAO inventar a ficha.",
+        "timeout": "Informar a indisponibilidade, nao responder sobre o ativo e sugerir tentar novamente ou consultar o FSM."
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "consultar_historico_falhas",
+        "description": "Retorna o historico simulado de falhas de um ativo identificado por TAG, dentro de uma janela retroativa em meses: data, sintoma, causa identificada, tempo de reparo (horas), peca trocada e indicador de reincidencia. Use sempre que o usuario perguntar sobre reincidencia, causa provavel ou comportamento historico de um equipamento.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "tag": {
+              "type": "string",
+              "description": "TAG do ativo, no formato usado no catalogo (ex.: CFTV-SP330-KM412-01).",
+              "pattern": "^(CFTV|PMV|CBX)-[A-Z]{2}[0-9]{3}-KM[0-9]{3}-[0-9]{2}$"
+            },
+            "janela_meses": {
+              "type": "integer",
+              "description": "Janela retroativa em meses a partir de hoje. Padrao 12. Use valor maior (ex.: 24 ou 36) para analisar reincidencia de longo prazo.",
+              "default": 12,
+              "minimum": 1,
+              "maximum": 60
+            },
+            "tipo_falha": {
+              "type": "string",
+              "description": "Filtro opcional pela natureza da falha. Omitir para trazer todas.",
+              "enum": ["obstrucao_lente", "desfoque", "perda_imagem", "falha_comunicacao", "modulo_led", "mensagem_travada", "botao_sem_resposta", "falha_audio", "falha_bateria", "outra"]
+            }
+          },
+          "required": ["tag"],
+          "additionalProperties": false
+        }
+      },
+      "x_comportamento_em_falha": {
+        "ativo_nao_encontrado": "Responder que nao ha historico para esse TAG na base, nao inventar registros e indicar o FSM como fonte oficial.",
+        "lista_vazia": "Informar que nao ha falhas registradas na janela consultada (isso NAO prova que o ativo e confiavel) e sugerir ampliar a janela.",
+        "timeout": "Informar a falha da consulta, nao usar memoria de turnos anteriores como se fosse resultado novo."
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "abrir_ordem_servico",
+        "description": "Abre uma ordem de servico SIMULADA e retorna o numero da OS. So chame esta tool DEPOIS que o usuario confirmar explicitamente a abertura (ex.: 'confirmo a abertura'). Nunca chame por iniciativa propria e nunca invente o numero da OS: use apenas o numero retornado pela tool.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "tag": {
+              "type": "string",
+              "description": "TAG do ativo alvo da OS.",
+              "pattern": "^(CFTV|PMV|CBX)-[A-Z]{2}[0-9]{3}-KM[0-9]{3}-[0-9]{2}$"
+            },
+            "tipo_intervencao": {
+              "type": "string",
+              "description": "Tipo de intervencao recomendada.",
+              "enum": ["corretiva", "preventiva", "inspecao", "cbm"]
+            },
+            "prioridade": {
+              "type": "string",
+              "description": "Prioridade segundo a matriz de criticidade: P1_critica (risco a seguranca viaria ou perda total de funcao critica), P2_alta, P3_media, P4_baixa.",
+              "enum": ["P1_critica", "P2_alta", "P3_media", "P4_baixa"]
+            },
+            "descricao": {
+              "type": "string",
+              "description": "Descricao objetiva do problema e das hipoteses a validar em campo (maximo 500 caracteres). Nao incluir dados pessoais (placas, nomes).",
+              "maxLength": 500
+            },
+            "janela_inicio": {
+              "type": "string",
+              "description": "Inicio da janela de atendimento, ISO 8601 (ex.: 2026-10-20T08:00:00-03:00).",
+              "format": "date-time"
+            },
+            "janela_fim": {
+              "type": "string",
+              "description": "Fim da janela de atendimento, ISO 8601, posterior a janela_inicio.",
+              "format": "date-time"
+            }
+          },
+          "required": ["tag", "tipo_intervencao", "prioridade", "descricao", "janela_inicio", "janela_fim"],
+          "additionalProperties": false
+        }
+      },
+      "x_comportamento_em_falha": {
+        "validacao_invalida": "Informar qual campo foi rejeitado e pedir correcao ao usuario; nao afirmar que a OS foi aberta.",
+        "timeout": "Informar que a abertura nao foi confirmada, nao inventar numero de OS e orientar a abrir manualmente no FSM."
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "consultar_procedimento",
+        "description": "Retorna o passo a passo do POP (Procedimento Operacional Padrao) aplicavel a um tipo de ativo e a um tipo de intervencao, incluindo pre-requisitos de seguranca (EPI, NR-10, NR-35). Use sempre que o usuario pedir um procedimento; nunca descreva procedimento de memoria.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "tipo_ativo": {
+              "type": "string",
+              "description": "Tipo do ativo coberto pelo recorte.",
+              "enum": ["cftv_ptz", "pmv", "callbox"]
+            },
+            "tipo_intervencao": {
+              "type": "string",
+              "description": "Tipo de intervencao para a qual se busca o POP.",
+              "enum": ["corretiva", "preventiva", "inspecao", "cbm"]
+            }
+          },
+          "required": ["tipo_ativo", "tipo_intervencao"],
+          "additionalProperties": false
+        }
+      },
+      "x_comportamento_em_falha": {
+        "pop_nao_encontrado": "Informar que nao ha POP simulado para a combinacao, nao inventar passos e encaminhar ao responsavel pela Engenharia de Manutencao.",
+        "timeout": "Informar a falha e reforcar que, sem o POP, a intervencao nao deve ser orientada."
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "calcular_metricas_confiabilidade",
+        "description": "DIFERENCIAL. Calcula, para um TAG e um periodo, a taxa de falha (lambda = numero_de_falhas / horas_de_operacao), o MTBF (1/lambda) e a confiabilidade R(t) = e^(-lambda*t) para o modelo exponencial, alem de uma indicacao de tendencia. Use quando o engenheiro perguntar sobre confiabilidade, probabilidade de falha ou decisao entre preventiva e CBM.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "tag": {
+              "type": "string",
+              "description": "TAG do ativo.",
+              "pattern": "^(CFTV|PMV|CBX)-[A-Z]{2}[0-9]{3}-KM[0-9]{3}-[0-9]{2}$"
+            },
+            "periodo_meses": {
+              "type": "integer",
+              "description": "Periodo de analise em meses.",
+              "minimum": 1,
+              "maximum": 60
+            },
+            "tempo_operacao_horas": {
+              "type": "number",
+              "description": "Horas de operacao do ativo no periodo (ex.: 24 h x dias do periodo). Se o ativo opera continuamente, usar 24 x dias.",
+              "exclusiveMinimum": 0
+            }
+          },
+          "required": ["tag", "periodo_meses", "tempo_operacao_horas"],
+          "additionalProperties": false
+        }
+      },
+      "x_comportamento_em_falha": {
+        "poucos_dados": "Se houver menos de 3 falhas no periodo, informar que a estimativa tem baixa confianca (amostra pequena) e rotular o resultado como HIPOTESE.",
+        "timeout": "Informar a falha e nao calcular manualmente como se fosse retorno da tool."
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "listar_ativos_por_criticidade",
+        "description": "DIFERENCIAL. Retorna o ranking de ativos por criticidade e pendencias abertas, com os criterios (seguranca viaria, arrecadacao, disponibilidade) que geraram a ordem. Use para priorizar atendimentos de forma auditavel.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "tipo_ativo": {
+              "type": "string",
+              "description": "Filtro opcional por tipo de ativo. Omitir para todos os tipos do recorte.",
+              "enum": ["cftv_ptz", "pmv", "callbox"]
+            },
+            "limite": {
+              "type": "integer",
+              "description": "Quantidade maxima de ativos no ranking. Padrao 10.",
+              "default": 10,
+              "minimum": 1,
+              "maximum": 50
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        }
+      },
+      "x_comportamento_em_falha": {
+        "lista_vazia": "Informar que nao ha ativos para o filtro e sugerir remover o filtro.",
+        "timeout": "Informar a falha e nao montar ranking de memoria."
+      }
+    }
+  ]
+}
