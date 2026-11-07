@@ -71,15 +71,20 @@ Estimativa com ≈ 1,4 token/palavra em pt-BR (a validar com o tokenizer do mode
 
 ## 6. Verificação de licenças e janelas de contexto (07/11/2026)
 
-| Item | Valor adotado | Status | Fonte |
+| Item | Valor adotado | Status | Fonte oficial |
 |---|---|---|---|
-| ChromaDB: licença | Apache 2.0 | **Confirmado (fonte oficial)** | [LICENSE no GitHub](https://github.com/chroma-core/chroma/blob/main/LICENSE) |
-| FAISS: licença | MIT | **Confirmado (fonte oficial)** | [Repositório no GitHub](https://github.com/facebookresearch/faiss) |
-| Qwen 2.5 7B Instruct: licença | Apache 2.0 | Confirmado por espelhos do model card (card oficial não acessível) | [Model card (Hugging Face)](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct) |
-| Qwen 2.5 7B Instruct: contexto | 32.768 tokens por padrão; até 131.072 com YaRN | Confirmado por espelhos do model card | idem |
-| Llama 3.1 8B Instruct: contexto | 128k | Confirmado por espelho do model card | [Model card (Hugging Face)](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct) |
-| Llama 3.1: português | Idioma oficialmente suportado | Confirmado em listagem da NVIDIA | [NVIDIA build](https://build.nvidia.com/meta/llama-3_1-8b-instruct.md) |
-| Llama 3.1: licença | Llama 3.1 Community License | Nome confirmado; **texto da licença não lido** | model card acima |
-| Gemini (AI Studio, plano gratuito): uso de dados | Não afirmado | **Não verificado** | [Termos da Gemini API](https://ai.google.dev/gemini-api/terms) |
+| ChromaDB: licença | Apache 2.0 | **Confirmado** | [LICENSE no GitHub](https://github.com/chroma-core/chroma/blob/main/LICENSE) |
+| FAISS: licença | MIT | **Confirmado** | [Repositório no GitHub](https://github.com/facebookresearch/faiss) |
+| Qwen 2.5 7B Instruct: licença | Apache 2.0 | **Confirmado** (`license: apache-2.0` no model card) | [Model card (Hugging Face)](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct) |
+| Qwen 2.5 7B Instruct: contexto | 131.072 tokens no total (geração até 8.192); `config.json` padrão em 32.768; acima disso exige YaRN, que pode afetar textos curtos no vLLM | **Confirmado** | idem |
+| Qwen 2.5: português | Entre os mais de 29 idiomas suportados | **Confirmado** | idem |
+| Llama 3.1 8B Instruct: contexto | 128k | **Confirmado** | [Model card oficial da Meta](https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md) |
+| Llama 3.1: português | Idioma oficialmente suportado (inglês, alemão, francês, italiano, português, hindi, espanhol, tailandês) | **Confirmado** | idem |
+| Llama 3.1: licença | Llama 3.1 Community License (licença comercial personalizada, com Política de Uso Aceitável) | **Confirmado** (nome e existência do texto); termos detalhados não analisados | [LICENSE](https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/LICENSE) |
+| Ollama: Qwen 2.5 7B e Llama 3.1 8B | Disponíveis; ambos com suporte a tools; Qwen sob Apache 2.0, Llama sob a licença acima | **Confirmado** | [qwen2.5:7b](https://ollama.com/library/qwen2.5:7b) · [llama3.1:8b](https://ollama.com/library/llama3.1:8b) |
+| Gemini (AI Studio, plano gratuito): uso de dados | Não afirmado | **Não verificado** (página de termos fora da rede disponível) | [Termos da Gemini API](https://ai.google.dev/gemini-api/terms) |
 
-**Pendências para o grupo:** abrir o model card oficial do Qwen e do Llama e conferir a licença e o contexto; ler os termos da Gemini API sobre uso de dados no plano gratuito; ler o texto da Llama 3.1 Community License. A escolha do Qwen local não depende do Gemini.
+**Observações:**
+- O limite adotado no projeto (`num_ctx = 8192`) é bem menor que os 32k nativos do Qwen e os 128k do Llama; essa escolha é de memória/hardware, não uma limitação dos modelos.
+- Antes de alterar o `num_ctx` acima de 32.768 no Qwen, ler a seção de YaRN do model card.
+- **Pendência:** ler os termos da Gemini API sobre uso dos dados enviados no plano gratuito. A decisão pelo Qwen local não depende disso.
