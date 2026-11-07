@@ -1,0 +1,14 @@
+CHALLENGE SPRINT 01 - ENGMAN COPILOT (FIAP x MOTIVA)
+
+Grupo: XX - Turma 1CC
+Recorte escolhido: A - Diagnostico e Confiabilidade
+
+Integrantes:
+Matheus Roberto - RM 575653 - 1CC
+Gustavo Oliveira Baptista - RM 575597 - 1CC
+Felipe Arruda Calixto - RM 574454 - 1CC
+Ana Luisa Santos - RM 574806 - 1CC
+Maria Eduarda Farias Lira - RM 575504 - 1CC
+
+Repositorio: https://github.com/FelipeArrudaCalixto/engman-copilot
+Fluxograma: https://github.com/FelipeArrudaCalixto/engman-copilot/blob/main/docs/arquitetura.png
