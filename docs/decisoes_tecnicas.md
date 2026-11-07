@@ -1,13 +1,13 @@
 # Decisões Técnicas — Stack, Parâmetros e Política de Contexto
 
-> Regra da disciplina: **caminho de execução 100% gratuito**. Nenhuma etapa depende de API paga. Valores de janela de contexto e licenças devem ser reconferidos na documentação oficial de cada projeto antes da Sprint 03; aqui servem como critério de comparação.
+> Regra da disciplina: **caminho de execução 100% gratuito**. Nenhuma etapa depende de API paga. A tabela de verificação da seção 6 registra o que foi conferido e em que fonte.
 
 ## 1. Modelo (LLM): comparação
 
 | Critério | **Qwen 2.5 7B Instruct** (Ollama local) | Llama 3.1 8B Instruct (Ollama local) | Gemini (Google AI Studio, free tier) |
 |---|---|---|---|
 | Custo de uso | Zero (roda local) | Zero (roda local) | Zero dentro da cota gratuita; sujeito a limites de requisição |
-| Licença / termos | Apache 2.0 (variante 7B) | Llama 3.1 Community License | Termos do Google AI Studio; no free tier, dados podem ser usados para melhorar o serviço |
+| Licença / termos | Apache 2.0 (variante 7B) | Llama 3.1 Community License | Termos do Google AI Studio; **conferir os termos vigentes** sobre uso dos dados enviados no plano gratuito |
 | Qualidade em pt-BR | Boa: treino fortemente multilíngue | Boa, um pouco inferior em instruções longas em português | Muito boa |
 | Janela de contexto | 32k nativo, até 128k com extensão (usaremos `num_ctx = 8192`) | Até 128k (idem) | Muito grande (≥ 1M em alguns modelos) |
 | Privacidade (roda local?) | **Sim** | **Sim** | Não: os dados vão para a nuvem do Google |
@@ -68,3 +68,18 @@ Estimativa com ≈ 1,4 token/palavra em pt-BR (a validar com o tokenizer do mode
 | **Total** | **≈ 6.550 de 8.192 (≈ 80%)**, com folga de ≈ 1.600 |
 
 **Estratégia de recorte:** quando o histórico passar de 6 turnos, os turnos mais antigos são substituídos por um **resumo** (TAG ativo, hipóteses, ação recomendada); o **TAG ativo** é reinjetado em todo turno (R13). Se o retorno de tool for grande (ex.: 36 meses de histórico), ele é filtrado por `tipo_falha` ou resumido antes de entrar no contexto. Como a base inteira tem ≈ 15–17 mil tokens e não cabe na janela, o RAG é obrigatório, não opcional.
+
+## 6. Verificação de licenças e janelas de contexto (07/11/2026)
+
+| Item | Valor adotado | Status | Fonte |
+|---|---|---|---|
+| ChromaDB: licença | Apache 2.0 | **Confirmado (fonte oficial)** | [LICENSE no GitHub](https://github.com/chroma-core/chroma/blob/main/LICENSE) |
+| FAISS: licença | MIT | **Confirmado (fonte oficial)** | [Repositório no GitHub](https://github.com/facebookresearch/faiss) |
+| Qwen 2.5 7B Instruct: licença | Apache 2.0 | Confirmado por espelhos do model card (card oficial não acessível) | [Model card (Hugging Face)](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct) |
+| Qwen 2.5 7B Instruct: contexto | 32.768 tokens por padrão; até 131.072 com YaRN | Confirmado por espelhos do model card | idem |
+| Llama 3.1 8B Instruct: contexto | 128k | Confirmado por espelho do model card | [Model card (Hugging Face)](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct) |
+| Llama 3.1: português | Idioma oficialmente suportado | Confirmado em listagem da NVIDIA | [NVIDIA build](https://build.nvidia.com/meta/llama-3_1-8b-instruct.md) |
+| Llama 3.1: licença | Llama 3.1 Community License | Nome confirmado; **texto da licença não lido** | model card acima |
+| Gemini (AI Studio, plano gratuito): uso de dados | Não afirmado | **Não verificado** | [Termos da Gemini API](https://ai.google.dev/gemini-api/terms) |
+
+**Pendências para o grupo:** abrir o model card oficial do Qwen e do Llama e conferir a licença e o contexto; ler os termos da Gemini API sobre uso de dados no plano gratuito; ler o texto da Llama 3.1 Community License. A escolha do Qwen local não depende do Gemini.

@@ -76,7 +76,7 @@ Caminho de execução **100% gratuito** (nenhuma etapa exige API paga). Detalhes
 | Critério | **Qwen 2.5 7B (Ollama local)** ✔ | Llama 3.1 8B (Ollama local) | Gemini (AI Studio free tier) |
 |---|---|---|---|
 | Custo | Zero | Zero | Zero dentro da cota |
-| Licença | Apache 2.0 | Llama 3.1 Community | Termos Google (free tier pode usar dados) |
+| Licença | Apache 2.0 | Llama 3.1 Community | Termos Google (conferir uso de dados no plano gratuito) |
 | Qualidade pt-BR | Boa | Boa | Muito boa |
 | Janela de contexto | 32k nativo, até 128k com extensão (usamos 8k) | até 128k (usamos 8k) | muito grande |
 | Privacidade / local | **Sim** | **Sim** | Não |
