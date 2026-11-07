@@ -1,0 +1,21 @@
+# Segredos
+.env
+.env.*
+*.key
+*.pem
+
+# Python / notebooks (nao fazem parte da Sprint 01)
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.ipynb
+
+# Bases vetoriais geradas localmente
+chroma_db/
+*.faiss
+
+# Sistema / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
