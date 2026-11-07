@@ -1,0 +1,57 @@
+tag,data,sintoma,causa_identificada,tipo_falha,tempo_reparo_h,peca_trocada,reincidencia
+CBX-SP330-KM090-01,2025-03-10,Desliga a noite,Bateria de backup no fim da vida util,falha_bateria,2.0,bateria 12V,nao
+CBX-SP330-KM090-01,2025-07-10,Desliga a noite,Bateria de backup no fim da vida util,falha_bateria,2.0,bateria 12V,sim
+CBX-SP330-KM118-01,2025-10-05,Desliga a noite,Bateria de backup no fim da vida util,falha_bateria,2.0,bateria 12V,nao
+CBX-SP330-KM118-01,2026-02-14,Botao sem resposta,Botao com infiltracao de agua,botao_sem_resposta,2.0,botao de acionamento,nao
+CBX-SP330-KM118-01,2026-06-30,Desliga a noite,Bateria de backup no fim da vida util,falha_bateria,2.0,bateria 12V,sim
+CBX-SP330-KM118-01,2026-10-28,Botao sem resposta,Botao com infiltracao de agua,botao_sem_resposta,2.0,botao de acionamento,sim
+CBX-SP330-KM142-01,2025-12-05,Audio unidirecional,Microfone danificado,falha_audio,1.5,microfone,nao
+CBX-SP330-KM197-01,2025-06-29,Audio unidirecional,Microfone danificado,falha_audio,1.5,microfone,nao
+CBX-SP330-KM197-01,2025-08-09,Desliga a noite,Bateria de backup no fim da vida util,falha_bateria,2.0,bateria 12V,nao
+CBX-SP330-KM197-01,2026-02-07,Desliga a noite,Bateria de backup no fim da vida util,falha_bateria,2.0,bateria 12V,sim
+CBX-SP330-KM197-01,2026-07-09,Desliga a noite,Bateria de backup no fim da vida util,falha_bateria,2.0,bateria 12V,sim
+CBX-SP330-KM233-01,2025-01-07,Desliga a noite,Bateria de backup no fim da vida util,falha_bateria,2.0,bateria 12V,nao
+CBX-SP330-KM296-01,2025-07-28,Desliga a noite,Bateria de backup no fim da vida util,falha_bateria,2.0,bateria 12V,nao
+CBX-SP330-KM355-01,2025-03-12,Botao sem resposta,Botao com infiltracao de agua,botao_sem_resposta,2.0,botao de acionamento,nao
+CBX-SP330-KM355-01,2025-08-05,Audio unidirecional,Microfone danificado,falha_audio,1.5,microfone,nao
+CFTV-SP330-KM098-01,2026-05-22,Perda de imagem a noite,Teia de aranha no domo refletindo IR,perda_imagem,2.0,nenhuma (limpeza),nao
+CFTV-SP330-KM145-01,2025-03-02,Sem video no CCO,Conector de fibra oxidado,falha_comunicacao,2.5,conector optico,nao
+CFTV-SP330-KM145-01,2026-01-01,Perda de imagem a noite,Teia de aranha no domo refletindo IR,perda_imagem,2.0,nenhuma (limpeza),nao
+CFTV-SP330-KM145-01,2026-07-23,Imagem tremida/desfocada,Vibracao do poste soltou suporte,desfoque,3.0,suporte de fixacao,nao
+CFTV-SP330-KM160-01,2025-05-26,Imagem tremida/desfocada,Vibracao do poste soltou suporte,desfoque,3.0,suporte de fixacao,nao
+CFTV-SP330-KM160-01,2026-10-11,Sem video no CCO,Conector de fibra oxidado,falha_comunicacao,2.5,conector optico,nao
+CFTV-SP330-KM240-01,2026-01-20,Imagem tremida/desfocada,Vibracao do poste soltou suporte,desfoque,3.0,suporte de fixacao,nao
+CFTV-SP330-KM240-01,2026-02-07,Sem video no CCO,Conector de fibra oxidado,falha_comunicacao,2.5,conector optico,nao
+CFTV-SP330-KM266-01,2025-01-19,Perda de imagem a noite,Teia de aranha no domo refletindo IR,perda_imagem,2.0,nenhuma (limpeza),nao
+CFTV-SP330-KM266-01,2025-01-24,Imagem escura a noite,Iluminador IR queimado,perda_imagem,3.5,iluminador IR,sim
+CFTV-SP330-KM266-01,2025-02-01,Perda de imagem a noite,Teia de aranha no domo refletindo IR,perda_imagem,2.0,nenhuma (limpeza),sim
+CFTV-SP330-KM266-01,2026-09-02,Imagem embacada,Lente obstruida por barro/fuligem,obstrucao_lente,1.5,nenhuma (limpeza),nao
+CFTV-SP330-KM289-01,2025-03-24,Sem video no CCO,Conector de fibra oxidado,falha_comunicacao,2.5,conector optico,nao
+CFTV-SP330-KM305-01,2024-12-29,Imagem escura a noite,Iluminador IR queimado,perda_imagem,3.5,iluminador IR,nao
+CFTV-SP330-KM305-01,2025-10-10,Perda de imagem a noite,Teia de aranha no domo refletindo IR,perda_imagem,2.0,nenhuma (limpeza),sim
+CFTV-SP330-KM305-01,2026-05-31,Sem video no CCO,Conector de fibra oxidado,falha_comunicacao,2.5,conector optico,nao
+CFTV-SP330-KM330-01,2026-01-11,Imagem tremida/desfocada,Vibracao do poste soltou suporte,desfoque,3.0,suporte de fixacao,nao
+CFTV-SP330-KM330-01,2026-05-27,Imagem tremida/desfocada,Vibracao do poste soltou suporte,desfoque,3.0,suporte de fixacao,sim
+CFTV-SP330-KM330-01,2026-08-30,Sem video no CCO,Conector de fibra oxidado,falha_comunicacao,2.5,conector optico,nao
+CFTV-SP330-KM412-01,2025-08-14,Imagem embacada,Lente obstruida por barro/fuligem,obstrucao_lente,1.5,nenhuma (limpeza),nao
+CFTV-SP330-KM412-01,2025-12-03,Perda de imagem a noite,Teia de aranha no domo refletindo IR,perda_imagem,2.0,nenhuma (limpeza),nao
+CFTV-SP330-KM412-01,2026-03-18,Perda de imagem a noite,Teia de aranha no domo refletindo IR,perda_imagem,2.0,nenhuma (limpeza),sim
+CFTV-SP330-KM412-01,2026-06-09,Imagem escura a noite,Iluminador IR queimado,perda_imagem,3.5,iluminador IR,sim
+CFTV-SP330-KM412-01,2026-09-22,Perda de imagem a noite,Teia de aranha no domo refletindo IR,perda_imagem,2.0,nenhuma (limpeza),sim
+PMV-SP330-KM077-01,2025-08-16,Mensagem travada,Controlador travado apos queda de energia,mensagem_travada,1.0,nenhuma (reinicio),nao
+PMV-SP330-KM077-01,2025-10-02,Mensagem travada,Controlador travado apos queda de energia,mensagem_travada,1.0,nenhuma (reinicio),sim
+PMV-SP330-KM170-01,2025-02-15,Sem comunicacao com CCO,Radio de enlace sem sinal,falha_comunicacao,5.0,radio de enlace,nao
+PMV-SP330-KM205-01,2025-11-20,Modulos de LED apagados,Fonte do modulo degradada,modulo_led,4.0,fonte 12V do modulo,nao
+PMV-SP330-KM205-01,2026-04-02,Modulos de LED apagados,Fonte do modulo degradada,modulo_led,4.0,fonte 12V do modulo,sim
+PMV-SP330-KM205-01,2026-07-15,Mensagem travada,Controlador travado apos queda de energia,mensagem_travada,1.0,nenhuma (reinicio),nao
+PMV-SP330-KM205-01,2026-10-01,Modulos de LED apagados,Fonte do modulo degradada,modulo_led,4.0,fonte 12V do modulo,sim
+PMV-SP330-KM251-01,2025-05-03,Mensagem travada,Controlador travado apos queda de energia,mensagem_travada,1.0,nenhuma (reinicio),nao
+PMV-SP330-KM251-01,2025-05-10,Sem comunicacao com CCO,Radio de enlace sem sinal,falha_comunicacao,5.0,radio de enlace,nao
+PMV-SP330-KM251-01,2025-06-16,Modulos de LED apagados,Fonte do modulo degradada,modulo_led,4.0,fonte 12V do modulo,nao
+PMV-SP330-KM278-01,2025-06-19,Sem comunicacao com CCO,Radio de enlace sem sinal,falha_comunicacao,5.0,radio de enlace,nao
+PMV-SP330-KM278-01,2026-07-09,Sem comunicacao com CCO,Radio de enlace sem sinal,falha_comunicacao,5.0,radio de enlace,nao
+PMV-SP330-KM318-01,2024-12-06,Mensagem travada,Controlador travado apos queda de energia,mensagem_travada,1.0,nenhuma (reinicio),nao
+PMV-SP330-KM318-01,2025-03-15,Mensagem travada,Controlador travado apos queda de energia,mensagem_travada,1.0,nenhuma (reinicio),sim
+PMV-SP330-KM318-01,2025-06-07,Sem comunicacao com CCO,Radio de enlace sem sinal,falha_comunicacao,5.0,radio de enlace,nao
+PMV-SP330-KM318-01,2025-12-27,Sem comunicacao com CCO,Radio de enlace sem sinal,falha_comunicacao,5.0,radio de enlace,sim
+PMV-SP330-KM318-01,2026-06-25,Mensagem travada,Controlador travado apos queda de energia,mensagem_travada,1.0,nenhuma (reinicio),nao
