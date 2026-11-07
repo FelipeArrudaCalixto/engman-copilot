@@ -4,11 +4,11 @@ Grupo: 05 - Turma 1CCPA
 Recorte escolhido: A - Diagnostico e Confiabilidade
 
 Integrantes:
-Matheus Roberto - RM 575653 - 1CC
-Gustavo Oliveira Baptista - RM 575597 - 1CC
-Felipe Arruda Calixto - RM 574454 - 1CC
-Ana Luisa Santos - RM 574806 - 1CC
-Maria Eduarda Farias Lira - RM 575504 - 1CC
+Matheus Roberto - RM 575653 - 1CCPA
+Gustavo Oliveira Baptista - RM 575597 - 1CCPA
+Felipe Arruda Calixto - RM 574454 - 1CCPA
+Ana Luisa Santos - RM 574806 - 1CCPA
+Maria Eduarda Farias Lira - RM 575504 - 1CCPA
 
 Repositorio: https://github.com/FelipeArrudaCalixto/engman-copilot
 Fluxograma: https://github.com/FelipeArrudaCalixto/engman-copilot/blob/main/docs/arquitetura.png

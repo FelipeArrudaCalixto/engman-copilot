@@ -12,11 +12,11 @@
 
 | Nome completo | RM | Turma | Papel |
 |---|---|---|---|
-| Matheus Roberto | RM575653 | 1CC | Product Owner |
-| Gustavo Oliveira Baptista | RM575597 | 1CC | Prompt Engineer |
-| Felipe Arruda Calixto | RM574454 | 1CC | Arquiteto / Tech Lead |
-| Ana Luísa Santos | RM574806 | 1CC | QA / Avaliação |
-| Maria Eduarda Farias Lira | RM575504 | 1CC | Documentação e Riscos |
+| Matheus Roberto | RM575653 | 1CCPA | Product Owner |
+| Gustavo Oliveira Baptista | RM575597 | 1CCPA | Prompt Engineer |
+| Felipe Arruda Calixto | RM574454 | 1CCPA | Arquiteto / Tech Lead |
+| Ana Luísa Santos | RM574806 | 1CCPA | QA / Avaliação |
+| Maria Eduarda Farias Lira | RM575504 | 1CCPA | Documentação e Riscos |
 
 > Os 5 papéis seguem a seção 8 do enunciado. Cada integrante é responsável pelos commits do artefato do seu papel.
 
