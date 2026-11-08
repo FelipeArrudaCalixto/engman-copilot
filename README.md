@@ -100,7 +100,7 @@ Caminho de execução **100% gratuito** (nenhuma etapa exige API paga). Detalhes
 
 Inventário completo em [`data/knowledge_base/inventario.md`](data/knowledge_base/inventario.md): **10 documentos**, entre eles catálogo de ativos, plano preventivo, histórico do FSM, 3 POPs, fichas técnicas, matriz de criticidade, glossário, normas NR-10/NR-35, briefing Motiva e boletins de campo. Cada documento traz descrição, campos e origem (real ou simulado).
 
-- **Já produzidos (simulados):** [`catalogo_ativos.csv`](data/knowledge_base/catalogo_ativos.csv) (30 ativos) e [`historico_falhas_fsm.csv`](data/knowledge_base/historico_falhas_fsm.csv) (56 registros, com 4 ativos-vitrine de histórico completo).
+- **Todos os 10 documentos foram produzidos** (simulados ou resumos conceituais) em [`data/knowledge_base/`](data/knowledge_base/): catálogo (30 ativos), histórico do FSM (56 registros, com 4 ativos-vitrine de histórico completo), 3 planos preventivos, 3 POPs, fichas técnicas, matriz de criticidade, glossário, resumo de NR-10/NR-35, briefing e 12 boletins de campo.
 - **Uso no RAG:** chunks de 400–600 tokens (overlap 10–15%), embeddings locais, ChromaDB com metadados (`tipo_documento`, `tipo_ativo`, `tag`, `data`, `criticidade`, `fonte`, `simulado`) e top-k = 4 filtrado.
 - **Fonte única de verdade:** ficha e histórico vêm **das tools**, não do RAG, para não haver duas versões do mesmo dado.
 - **Nunca entra:** dados pessoais de empregados, placas, imagens de ocupantes, dados contratuais ou dados reais da Motiva.
@@ -213,7 +213,12 @@ engman-copilot/
 ├── data/knowledge_base/
 │   ├── inventario.md                  # 10 documentos: fonte e status
 │   ├── catalogo_ativos.csv            # 30 ativos (simulado)
-│   └── historico_falhas_fsm.csv       # 56 registros (simulado)
+│   ├── historico_falhas_fsm.csv       # 56 registros (simulado)
+│   ├── PMP-CFTV-001.md · PMP-PMV-001.md · PMP-CBX-001.md   # planos preventivos (simulado)
+│   ├── POP-CFTV-001.md · POP-PMV-001.md · POP-CBX-001.md   # POPs (simulado)
+│   ├── matriz_criticidade.md · fichas_tecnicas.md          # (simulado)
+│   ├── glossario.md · normas_seguranca.md · briefing_motiva.md   # resumos
+│   └── boletins_ocorrencia.md         # 12 boletins (simulado)
 ├── tools/tools_spec.json              # 4 tools obrigatórias + 2 diferenciais
 └── sprint1_entrega.txt                # cópia do .txt enviado na plataforma
 ```

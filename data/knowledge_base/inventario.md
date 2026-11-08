@@ -24,10 +24,20 @@ Total: **10 documentos** (mínimo exigido: 8).
 
 ### Documentos já produzidos nesta sprint (dados SIMULADOS)
 
-| Arquivo | Conteúdo | Tamanho |
-|---|---|---|
-| [`catalogo_ativos.csv`](catalogo_ativos.csv) | Documento 1: 12 CFTV PTZ, 10 PMV, 8 Callbox, com todos os campos do catálogo | 30 ativos |
-| [`historico_falhas_fsm.csv`](historico_falhas_fsm.csv) | Documento 3: data, sintoma, causa, `tipo_falha` (mesmo enum da tool), tempo de reparo, peça, reincidência (mesmo TAG e mesmo tipo em até 365 dias) | 56 registros |
+Os 10 documentos do inventário foram produzidos e estão nesta pasta. Os marcados como real são resumos conceituais; nenhum dado real da Motiva é usado.
+
+| # | Arquivo | Conteúdo | Tamanho |
+|---|---|---|---|
+| 1 | [`catalogo_ativos.csv`](catalogo_ativos.csv) | 12 CFTV PTZ, 10 PMV, 8 Callbox, com todos os campos do catálogo | 30 ativos |
+| 2 | [`PMP-CFTV-001.md`](PMP-CFTV-001.md) · [`PMP-PMV-001.md`](PMP-PMV-001.md) · [`PMP-CBX-001.md`](PMP-CBX-001.md) | Planos de manutenção preventiva: tarefa, periodicidade, responsável, tempo, recursos e condição | 3 planos |
+| 3 | [`historico_falhas_fsm.csv`](historico_falhas_fsm.csv) | Data, sintoma, causa, `tipo_falha` (mesmo enum da tool), tempo de reparo, peça, reincidência | 56 registros |
+| 4 | [`POP-CFTV-001.md`](POP-CFTV-001.md) · [`POP-PMV-001.md`](POP-PMV-001.md) · [`POP-CBX-001.md`](POP-CBX-001.md) | POPs com pré-requisitos de segurança e as 4 seções de intervenção (inspeção, preventiva, corretiva, CBM) | 3 POPs |
+| 5 | [`fichas_tecnicas.md`](fichas_tecnicas.md) | Fichas dos 3 tipos de ativo do recorte | 3 fichas |
+| 6 | [`matriz_criticidade.md`](matriz_criticidade.md) | Estado da falha × criticidade do ativo → prioridade P1–P4 | 1 matriz |
+| 7 | [`glossario.md`](glossario.md) | Siglas do briefing e de confiabilidade | 30 siglas |
+| 8 | [`normas_seguranca.md`](normas_seguranca.md) | Resumo conceitual de NR-10 e NR-35 e regras de trabalho em via | 1 resumo |
+| 9 | [`briefing_motiva.md`](briefing_motiva.md) | Contexto da Motiva e Temas 1, 2 e 2.1 | 1 resumo |
+| 10 | [`boletins_ocorrencia.md`](boletins_ocorrencia.md) | Relatos de técnico sem dado pessoal, coerentes com o histórico | 12 boletins |
 
 **Ativos-vitrine com histórico completo e realista** (prontos para o dataset simulado e usados nos casos de teste):
 
