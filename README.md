@@ -28,9 +28,11 @@ O resultado são **deslocamentos de campo desnecessários**, diagnósticos que r
 
 ## 3. Recorte e persona
 
-- **Recorte: A · Diagnóstico e Confiabilidade.** Ele é aderente ao Tema 2 e à onda de Engenharia de Confiabilidade. O grupo escolheu A porque a principal alavanca do briefing é o **histórico do FSM subutilizado**, e o Recorte A transforma esse histórico em decisão (corretiva × preventiva × inspeção × CBM). O Recorte B depende de alarmes em tempo real, que não conseguimos simular com o mesmo realismo.
-- **Persona principal: Engenheiro de Manutenção.** Ele analisa reincidência, decide retrofit e monta o plano preventivo. Seu **risco principal** é tirar uma conclusão sem base estatística e errar o CAPEX. Por isso o prompt exige métricas, fontes, premissas e **nível de confiança** em toda resposta.
-- **Persona secundária: Técnico de campo.** Usa o assistente no celular e precisa de passos curtos. Seu risco é físico (acidente ou dano ao ativo), então o tom muda para passo a passo, com EPI e desligamento seguro antes de tudo.
+- **Recorte: A · Diagnóstico e Confiabilidade.** Escolhemos este recorte porque o briefing deixa claro que o histórico de falhas do FSM existe, mas quase não é aproveitado, e que o plano de manutenção segue o calendário em vez da condição real do equipamento. O Recorte A usa justamente esse histórico para responder a uma pergunta do dia a dia: "o que costuma causar essa falha neste equipamento e qual intervenção vale a pena?". Ele se liga diretamente ao Tema 2 (confiabilidade preditiva) e ao Tema 2.1 (câmeras de CFTV que perdem imagem por sujeira, teia ou desfoque). Além disso, conseguimos montar uma base simulada consistente para ele, com catálogo, histórico por TAG, planos e procedimentos.
+
+- **Persona principal: engenheiro de manutenção.** É quem analisa as falhas que se repetem, decide entre corretiva, preventiva, inspeção ou manutenção por condição (CBM) e justifica o investimento. Hoje ele precisa reunir histórico, plano e procedimento em fontes separadas, e isso consome tempo e leva a decisões baseadas em impressão. O **risco principal** dessa persona é concluir sem base estatística e errar uma decisão de investimento. Por isso o assistente sempre cita a fonte, separa fato de hipótese, informa o nível de confiança e deixa a decisão final com o profissional.
+
+- **Persona secundária: técnico de campo.** Ele usa o assistente com o equipamento na mão e precisa de passos curtos e claros. O risco aqui é físico: uma instrução errada pode causar acidente ou dano ao ativo. Por isso, quando o assistente atende o técnico, ele muda o tom para passo a passo e coloca EPI e desligamento seguro antes de qualquer ação, sempre remetendo ao procedimento oficial (NR-10 e NR-35).
 
 ## 4. Escopo do assistente
 
